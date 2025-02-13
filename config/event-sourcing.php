@@ -101,7 +101,7 @@ return [
      * and stored as json. You can customize the class name. A valid serializer
      * should implement Spatie\EventSourcing\EventSerializers\EventSerializer.
      */
-    'event_serializer' => Spatie\EventSourcing\EventSerializers\JsonEventSerializer::class,
+    'event_serializer' => App\Serializers\DataEventSerializer::class,
 
     /*
      * These classes normalize and restore your events when they're serialized. They allow
