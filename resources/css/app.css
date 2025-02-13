@@ -1,3 +1,25 @@
+@font-face {
+    font-family: 'Amita';
+    src: url('../fonts/Amita-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/RobotoCondensed-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .subtitle {
+        @apply font-amita text-center leading-10 py-6 text-3xl;
+    }
+}

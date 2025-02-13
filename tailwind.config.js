@@ -12,7 +12,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                'skolar': ['skolar-sans-latin'],
+                'amita': ['Amita'],
+                'roboto': ['Roboto'],
             },
         },
     },
