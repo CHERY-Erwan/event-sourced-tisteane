@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EventSourcing\Projections\Projection;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
 /**
@@ -26,18 +30,38 @@ use Spatie\Translatable\HasTranslations;
  * @property-read Collection<ProductVariant> $variants
  * @property-read Collection<ProductAttribute> $attributes
  */
-final class Product extends Projection
+final class Product extends Projection implements HasMedia
 {
     use HasFactory;
     use HasTranslations;
     use HasUuids;
     use SoftDeletes;
+    use InteractsWithMedia;
 
     protected $primaryKey = 'uuid';
 
-    protected $fillable = ['uuid', 'category_uuid', 'sku', 'slug', 'label', 'short_description', 'description', 'stock', 'is_active', 'is_featured'];
+    protected $fillable = ['uuid', 'category_uuid', 'sku', 'slug', 'short_label', 'label', 'short_description', 'description', 'stock', 'is_active', 'is_featured'];
 
-    public $translatable = ['label', 'description', 'short_description'];
+    public $translatable = ['label', 'short_description', 'description'];
+
+    public $appends = ['homepage_attachment'];
+
+    protected function homepageAttachment(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->getFirstMediaUrl('homepage_attachment', 'webp')
+        );
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('webp')
+            ->format('webp')
+            ->performOnCollections(
+                'homepage_attachment',
+            )
+            ->nonQueued();
+    }
 
     /**
      * Get the category of the product.

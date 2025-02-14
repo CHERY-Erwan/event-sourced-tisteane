@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('category_uuid')->nullable();
             $table->string('sku')->unique();
             $table->string('slug')->unique();
+            $table->string('short_label')->nullable();
             $table->json('label')->nullable();
             $table->json('short_description')->nullable();
             $table->json('description')->nullable();

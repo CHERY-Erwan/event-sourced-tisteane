@@ -19,6 +19,7 @@ final class ProductProjector extends Projector
                 'category_uuid' => $event->categoryUuid,
                 'sku' => $event->identifiers->sku,
                 'slug' => $event->identifiers->slug,
+                'short_label' => $event->details->shortLabel,
                 'label' => $event->details->label,
                 'short_description' => $event->details->shortDescription,
                 'description' => $event->details->description,
