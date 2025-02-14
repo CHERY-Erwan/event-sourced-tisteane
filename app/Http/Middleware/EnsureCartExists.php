@@ -17,9 +17,7 @@ class EnsureCartExists
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session()->has('cart')) {
-            $cart = session()->get('cart');
-
+        if (session()->has('cartUuid')) {
             return $next($request);
         }
 
@@ -30,7 +28,7 @@ class EnsureCartExists
             'customerUuid' => $customerUuid,
             'sessionId' => $sessionId,
         ]));
-        session()->put('cart', $cart);
+        session()->put('cartUuid', $cart->uuid);
 
         return $next($request);
     }

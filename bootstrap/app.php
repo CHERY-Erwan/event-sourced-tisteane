@@ -12,7 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(EnsureCartExists::class);
+        $middleware->appendToGroup('web', [
+            EnsureCartExists::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
