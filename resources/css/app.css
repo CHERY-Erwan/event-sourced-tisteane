@@ -22,4 +22,7 @@
     .subtitle {
         @apply font-amita text-center leading-10 py-6 text-3xl;
     }
+    .image-hover {
+        @apply transition-transform duration-[3000ms] ease-in-out group-hover:scale-110;
+    }
 }

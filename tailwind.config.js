@@ -16,6 +16,14 @@ export default {
                 'amita': ['Amita'],
                 'roboto': ['Roboto'],
             },
+            colors: {
+                'cream': '#F1ECD8',
+                'neutral-100': '#E3E0DE',
+                'neutral-200': '#C9C2BF',
+                'neutral-500': '#827370',
+                'neutral-950': '#272223',
+                'dark-bg': '#121212',
+            },
         },
     },
 
