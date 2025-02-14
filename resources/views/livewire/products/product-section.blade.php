@@ -29,6 +29,7 @@ new class extends Component
 ?>
 
 <div class="flex flex-col gap-5">
+    <div class="pl-5 text-neutral-950 text-xl font-amita">@lang('pages/homepage.product_section.description')</div>
     @foreach ($this->products as $product)
         <x-products.product-card :product="$product" />
     @endforeach

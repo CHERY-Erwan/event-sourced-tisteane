@@ -23,7 +23,7 @@
         x-data="{ object: true }"
         x-init="function() { this.object = false }"
         x-cloak
-        class="font-skolar antialiased bg-[#f6f1eb] min-h-screen p-4 max-w-screen-2xl mx-auto text-center">
+        class="font-skolar antialiased bg-[#f6f1eb] min-h-screen p-4 max-w-screen-2xl mx-auto">
         <main>
             {{ $slot }}
         </main>
